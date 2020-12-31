@@ -13,3 +13,6 @@ npm-debug.log
 yarn-error.log
 /.idea
 /public_html
+schema-directives.graphql
+programmatic-types.graphql
+_lighthouse_ide_helper.php
