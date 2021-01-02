@@ -29,28 +29,23 @@ type Mutation {
         id: ID! @rules(apply: ["required"])
     ): Category @delete
 
-    createBook (
+    upsertBook (
+        id: ID
         title: String! @rules(apply: ["required"])
         author: String! @rules(apply: ["required"])
         image: String
         link: String
         description: String
         featured: Boolean
-        category: Int!
-    ): Book @create
-    updateBook (
-        id: ID @rules(apply: ["required"])
-        title: String! @rules(apply: ["required"])
-        author: String! @rules(apply: ["required"])
-        image: String
-        link: String
-        description: String
-        featured: Boolean
-        category: Int!
-    ): Book @create
+        category: UpsertCategoryBelongsTo
+    ): Book @upsert
     deleteBook (
         id: ID! @rules(apply: ["required"])
     ): Book @delete
+}
+
+input UpsertCategoryBelongsTo {
+    connect: ID
 }
 
 type User {
